@@ -4,9 +4,10 @@ int main (int argc, char **argv){
   char s[100];
   char ss[100];
   //ler string sem espaco
-  scanf("%s",s);   
+  scanf("%s",s);  
+
   //ler string com espaco
-  scanf("%[^\n]",ss);  
+  scanf("%s[^\n]",ss);  
   for (i = 0 ; s[i] != '\0' ; i++){
     if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u'){
       cont++;
