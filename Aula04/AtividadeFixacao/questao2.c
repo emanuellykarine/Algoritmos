@@ -7,7 +7,7 @@ int  main(){
     *ponteiro = 50; // variavel vai receber 50, os locais que estao no mesmo endereço
     ponteiro = &a; //ponteiro recebe endereço de a, compartilham mesmo valor
 
-    printf("a,b,c,*p=%d, %d, %d, %d\n",a, b, c, *ponteiro);
+    printf("a=%d,b=%d,c=%d,*p=%d\n",a, b, c, *ponteiro);
     return 0;
 
 }
