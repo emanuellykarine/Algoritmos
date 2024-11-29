@@ -6,7 +6,7 @@ int main() {
     int valor = *ponteiro;
     // com * - valor; sem * - endereço de memoria 
     // ponteiro armazena o endereço de memoria de outra variavel
-    //se modifica o enedreço, modifica o valor 
+    //se modifica o endereço, modifica o valor 
 
     printf("Valor: %d\n", valor);
 
