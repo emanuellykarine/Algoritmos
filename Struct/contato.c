@@ -8,68 +8,129 @@ struct Contato {
     char endereco[100];
 };
 
-struct Contato* inserir(char nome[], char telefone[], char email[], char endereco[]){
-    struct Contato* contato = (struct Conato*) malloc(sizeof(struct Contato));
-    
-    strcpy(contato->nome, nome);
-    strcpy(contato->telefone, telefone);
-    strcpy(contato->email, email);
-    strcpy(contato->endereco, endereco);
+void inserir(struct Contato agenda[], int cont){
+    printf("Digite o nome do contato %d: ", cont + 1);
+    scanf("%s", agenda[cont].nome);
 
-    return contato;
+    scanf("%*c");
+
+    printf("Digite o telefone do contato %d: ", cont + 1);
+    scanf("%s", agenda[cont].telefone);
+
+    scanf("%*c");
+
+    printf("Digite o email do contato %d: ", cont + 1);
+    scanf("%s", agenda[cont].email);
+
+    scanf("%*c");
+    printf("Digite o endereço do contato %d: ", cont + 1);
+    scanf("%s", agenda[cont].endereco); 
+
+    scanf("%*c");
 }
 
-struct Contato* listar(int array){
-    return array;
+void listar(struct Contato agenda[], int cont){
+    if (agenda == NULL){
+        printf("Lista de contatos vazia.");
+    } else {
+        printf("Lista de contatos:\n");
+            for (int i = 0; i < cont; i++){
+                printf("Contato %d\n", i + 1);
+                printf("Nome: %s  ", agenda[i].nome);
+                printf("Telefone: %s  ", agenda[i].telefone);
+                printf("Email: %s  ", agenda[i].email);
+                printf("Endereço: %s\n", agenda[i].endereco);
+            }
+    }
 }
 
-int excluir(){
-
+void excluir(struct Contato agenda[], int opContato){
+    int opcao = opContato - 1;
+    if (opcao < 0){
+        printf("Não tem contatos cadastrados.");
+    } else if (&agenda[opcao] == NULL){
+        printf("Não existe esse contato.");
+    } else {
+        for (int i = opcao;i < sizeof(agenda) - 1; ++i){ 
+            agenda[i] = agenda[i + 1];
+        }
+    }
 }
 
-int atualizar(){
+int atualizar(struct Contato agenda[], int opContato){
+    int opcao = opContato - 1;
 
+    if (opcao < 0){
+        printf("Não tem contatos cadastrados.");
+    } else if (&agenda[opcao] == NULL){
+        printf("Não existe esse contato.");
+    } else {
+        struct Contato* contato = &agenda[opcao];
+        
+         printf("Digite o nome do contato: ");
+        scanf("%s", agenda[opcao].nome);
+
+        scanf("%*c");
+
+        printf("Digite o telefone do contato: ");
+        scanf("%s", agenda[opcao].telefone);
+
+        scanf("%*c");
+
+        printf("Digite o email do contato: ");
+        scanf("%s", agenda[opcao].email);
+
+        scanf("%*c");
+
+        printf("Digite o endereço do contato: ");
+        scanf("%s", agenda[opcao].endereco); 
+
+        scanf("%*c");
+    }  
 }
 
 int main() {
-    struct Contato* agenda[100];
+    struct Contato agenda[100];
     struct Contato pessoa;
-    int op;
+    int op = 0;
     int cont = 0;
+    int opContato = 0;
     
     while (op != 10){
-        printf("1 - Inserir contato \n2 - Atualizar contato \n3 - Excluir Contato \n4 - Listar contatos\n");
+        printf("1 - Inserir contato \n2 - Atualizar contato \n3 - Excluir Contato \n4 - Listar contatos \n10 - Finalizar lista\n");
         printf("Digite a opção: ");
-        scanf("%d\n", &op);
+        scanf("%d", &op);
 
-        if (op == 1){
-            printf("Digite o nome do contato %d: ", cont + 1);
-            scanf("%s", pessoa.nome);
-
-            printf("Digite o telefone do contato %d: ", cont + 1);
-            scanf("%s", pessoa.telefone);
-
-            printf("Digite o email do contato %d: ", cont + 1);
-            scanf("%s", pessoa.email);
-
-            printf("Digite o endereço do contato %d: ", cont + 1);
-            scanf("%s", pessoa.endereco); 
-
-            agenda[cont] = inserir(pessoa.nome, pessoa.telefone, pessoa.email, pessoa.endereco);
+        if (op == 1 && cont < sizeof(agenda)){
+            inserir(agenda, cont);
             cont += 1;
+
         } else if (op == 2){
+            listar(agenda, cont);
+
+            printf("Qual contato você deseja atualizar as informações?");
+            scanf("%d", &opContato);
+
+            atualizar(agenda, opContato);
+            printf("Contato atualizado.\n");
 
         } else if (op == 3){
-            struct Contato* contatos = listar(agenda);
-            for (int i = 0; i < cont; i++){
-                printf("Nome: %s\n", contatos[i].nome);
-                printf("Telefone: %s\n", contatos[i].telefone);
-                printf("Email: %s\n", contatos[i].email);
-                printf("Endereço: %s\n", contatos[i].endereco);
+            listar(agenda, cont);
 
-            }
-            return 0;
-        }
+            printf("Qual contato você deseja excluir?");
+            scanf("%d", &opContato);
+            
+            cont-=1;
+            
+            excluir(agenda, opContato);
+            printf("Contato excluído.\n");
 
+        } else if (op == 4){
+            listar(agenda, cont);
+
+        } else if (op == 10){
+            printf("Fim.\n");
+        }  
     }
+    return 0;
 }
