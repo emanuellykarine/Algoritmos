@@ -76,12 +76,11 @@ int atualizar(struct Contato agenda[], int opContato){
 
 
 int main() {
-    struct Contato agenda[100];
-    struct Contato pessoa;
     int op = 0;
     int cont = 0;
     int opContato = 0;
-    
+    int capacidade = 10;
+    struct Contato agenda[capacidade];
     while (op != 10){
         printf("------------------------------\n");
         printf("1 - Inserir contato \n2 - Atualizar contato \n3 - Excluir Contato \n4 - Listar contatos \n10 - Finalizar lista\n");
@@ -90,6 +89,14 @@ int main() {
         scanf("%d", &op);
 
         if (op == 1 && cont < sizeof(agenda)){
+            if (capacidade == cont){
+                struct Contato novaAgenda[capacidade * 2];
+                capacidade = capacidade * 2;
+                for (int i = 0; i < capacidade / 2; i++){
+                    novaAgenda[i] = agenda[i];
+                }
+                struct Contato agenda[capacidade] = novaAgenda;
+            }
             printf("Inserir Contato\n");
             inserir(agenda, cont);
             cont += 1;
