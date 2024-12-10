@@ -95,12 +95,12 @@ int main() {
                 for (int i = 0; i < capacidade / 2; i++){
                     novaAgenda[i] = agenda[i];
                 }
-                struct Contato agenda[capacidade] = novaAgenda;
+
+                agenda = novaAgenda;
             }
             printf("Inserir Contato\n");
             inserir(agenda, cont);
             cont += 1;
-
         } else if (op == 2){
             printf("Atualizar Contato\n");
             listar(agenda, cont);
