@@ -96,7 +96,7 @@ int main() {
                     novaAgenda[i] = agenda[i];
                 }
 
-                agenda = novaAgenda;
+                // agenda = novaAgenda;
             }
             printf("Inserir Contato\n");
             inserir(agenda, cont);
