@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.List;
 import java.util.ArrayList;
 import java.io.FileReader;
 
@@ -30,7 +29,7 @@ public class bubbleSort{
                     break;
                 }
             }
-            System.out.print("tempo de execução:" + (System.currentTimeMillis() - tempoInicial) + " milisegundos \n"); 
+            System.out.print("tempo de execucao:" + (System.currentTimeMillis() - tempoInicial) + " milisegundos \n"); 
 
         } catch (IOException e){
             System.err.println("Erro ao ler o arquivo: " + e.getMessage());
