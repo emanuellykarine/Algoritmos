@@ -23,3 +23,5 @@ public class mergeSort{
     }        
 } 
 
+// https://joaoarthurbm.github.io/eda/posts/merge-sort/
+//https://github.com/joaoarthurbm/eda-implementacoes/blob/master/java/src/sorting/MergeSort.java
