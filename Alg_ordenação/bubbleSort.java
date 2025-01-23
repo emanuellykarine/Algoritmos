@@ -6,7 +6,7 @@ import java.io.FileReader;
 public class bubbleSort{
     public static void main(String[] args){
         ArrayList<Integer> lista = new ArrayList<Integer>(); //Criação da lista para guardar os valores
-        try(BufferedReader br = new BufferedReader(new FileReader("1000000Numeros.txt"))){ //leitura do arquivo
+        try(BufferedReader br = new BufferedReader(new FileReader("100000Numeros.txt"))){ //leitura do arquivo
             String line = br.readLine(); //linha por linha
             while (line != null){
                 lista.add(Integer.parseInt(line)); //guarda linha na lista transformando para inteiro
@@ -34,6 +34,7 @@ public class bubbleSort{
         } catch (IOException e){
             System.err.println("Erro ao ler o arquivo: " + e.getMessage());
         }
+
     }        
 } 
 

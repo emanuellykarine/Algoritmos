@@ -14,11 +14,15 @@ public class mergeSort{
             }
 
             long tempoInicial = System.currentTimeMillis(); //tempo inicial antes da execução do código
-            
             System.out.print("tempo de execução:" + (System.currentTimeMillis() - tempoInicial) + " milisegundos \n"); 
+            
         } catch (IOException e){
             System.err.println("Erro ao ler o arquivo: " + e.getMessage());
         }
+
+        
+        System.out.println(lista);
+        
     }        
 } 
 
