@@ -11,20 +11,22 @@ public class quickSort{
          
         int i = primeiro - 1; //Menor indice do array
 
-        for (int j = primeiro; j <= ultimo - 1; j++){ //Começa do primeiro indice e vai ate o ultimo
+        for (int j = primeiro; j <= ultimo - 1; j++){ //Começa do primeiro indice e vai ate o ultimo antes do pivo
             if (a[j] < pivo){ //Se o elemento for menor que o pivo ele fica a esquerda do pivo
-                i++;
-                int guarda = a[i]; // Recebe o valor do indice i
-                a[i] = a[j]; //Guarda 
-                a[j] = guarda;
+                i++; //Soma 1 ao indice i
+                int guarda = a[i]; //Guarda recebe elemento do indice i (se todos os elementos menores ja estiverem a esquerda do pivo, esse pedaço do codigo guarda os valores no mesmo lugar)
+                a[i] = a[j];  //Indice i recebe elemento do indice j
+                a[j] = guarda; //Indice J recebe antigo elemento do indice I
+                //O indice I serve para manter a troca entre o menor elemento com o maior, sempre colocando os menores a esquerda e os maiores a direita
             }
         }
 
-        int guarda = a[i+1];
+        //Quando percorreu todo o array, pega o pivo e o coloca na posição certa do array, com os menores a esquerda e os maiores a direita
+        int guarda = a[i+1]; 
         a[i+1] = a[ultimo];
         a[ultimo] = guarda;
 
-        return i + 1;
+        return i + 1; //Retorna posição onde o pivo foi guardado
     }
 
     //Função recursiva que divide o array ao meio até não poder ser mais dividido, ou seja, até ter apenas um elemento
@@ -32,8 +34,8 @@ public class quickSort{
         if (primeiro < ultimo) { //Se o primeiro indice for menor que o ultimo indice, ou seja, quando tiver apenas um elemento
             int pi = particao(a, primeiro, ultimo);
             
-            sort(a, primeiro, pi - 1);
-            sort(a, pi + 1, ultimo);
+            sort(a, primeiro, pi - 1); //Subarray que inicia antes do pivo
+            sort(a, pi + 1, ultimo); //Subarray que começa depois do pivo
         }
     }
 
